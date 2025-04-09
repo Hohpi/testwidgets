@@ -292,8 +292,8 @@
             document.getElementById('progress-fill').style.width = `${completionPercentage}%`;
             document.getElementById('progress-text').textContent = `${completionPercentage}%`;
             
-            // Update the last updated timestamp
-            const lastUpdated = new Date(config.lastUpdated);
+            // Update the last updated timestamp to current time
+            const currentDateTime = new Date();
             // Format time in Eastern Time Zone
             const options = { 
                 timeZone: 'America/New_York',
@@ -304,7 +304,7 @@
                 minute: '2-digit',
                 hour12: true
             };
-            const formattedDate = lastUpdated.toLocaleString('en-US', options);
+            const formattedDate = currentDateTime.toLocaleString('en-US', options);
             document.getElementById('last-updated').textContent = `Last updated: ${formattedDate} ET`;
             
             // Display the list of games
