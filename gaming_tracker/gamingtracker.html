@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
+    <title>Gaming Stats Tracker</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #eeeeee;
+            font-family: 'Lato', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-box {
+            color: #eeeeee;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 0.7em;
+            letter-spacing: 5px;
+            padding: 20px;
+            width: 150px;
+            border-radius: 5px;
+        }
+        
+        #monthly {
+            background: #EF2F3C;
+        }
+        
+        #yearly {
+            background: #276FBF;
+        }
+        
+        #total {
+            background: #F0A202;
+        }
+        
+        .numbers {
+            font-family: 'Montserrat', sans-serif;
+            color: #183059;
+            font-size: 4em;
+            text-align: center;
+            background: #eeeeee;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+        }
+        
+        .progress-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+        }
+        
+        .progress-bar {
+            height: 30px;
+            background-color: #444;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: #276FBF;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            mix-blend-mode: difference;
+        }
+        
+        .last-updated {
+            margin-top: 20px;
+            font-size: 0.8em;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gaming Tracker Stats</h1>
+    
+    <div class="stats-container">
+        <div class="stat-box" id="monthly">
+            <div id="monthly-count" class="numbers">0</div>
+            <div>Games in <span id="current-month">April</span></div>
+        </div>
+        
+        <div class="stat-box" id="yearly">
+            <div id="yearly-count" class="numbers">0</div>
+            <div>Games in <span id="current-year">2025</span></div>
+        </div>
+        
+        <div class="stat-box" id="total">
+            <div id="total-count" class="numbers">0</div>
+            <div>Total Games</div>
+        </div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-title">COMPLETION PROGRESS</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+            <div class="progress-text" id="progress-text">0%</div>
+        </div>
+    </div>
+    
+    <div class="last-updated" id="last-updated">Last updated: ...</div>
+    
+    <script>
+        // Default configuration
+        let config = {
+            totalLibrarySize: 0,
+            gamesPlayedThisMonth: 0,
+            gamesPlayedThisYear: 0,
+            totalGamesPlayed: 0,
+            games: [],
+            lastUpdated: new Date().toISOString()
+        };
+        
+        // Function to update the display with the latest data
+        function updateDisplay() {
+            // Update the count displays
+            document.getElementById('monthly-count').textContent = config.gamesPlayedThisMonth;
+            document.getElementById('yearly-count').textContent = config.gamesPlayedThisYear;
+            document.getElementById('total-count').textContent = config.totalGamesPlayed;
+            
+            // Calculate and update progress bar
+            const completionPercentage = Math.round((config.totalGamesPlayed / config.totalLibrarySize) * 100) || 0;
+            document.getElementById('progress-fill').style.width = `${completionPercentage}%`;
+            document.getElementById('progress-text').textContent = `${completionPercentage}%`;
+            
+            // Update the last updated timestamp
+            const lastUpdated = new Date(config.lastUpdated);
+            document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated.toLocaleString()}`;
+        }
+        
+        // Set current month and year
+        const date = new Date();
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        document.getElementById('current-month').textContent = months[date.getMonth()];
+        document.getElementById('current-year').textContent = date.getFullYear();
+        
+        // Function to calculate statistics based on games data
+        function calculateStats(gamesData) {
+            const currentMonth = date.getMonth();
+            const currentYear = date.getFullYear();
+            
+            // Count games played this month
+            const thisMonthGames = gamesData.filter(game => {
+                const gameDate = new Date(game.dateCompleted);
+                return gameDate.getMonth() === currentMonth && gameDate.getFullYear() === currentYear;
+            });
+            
+            // Count games played this year
+            const thisYearGames = gamesData.filter(game => {
+                const gameDate = new Date(game.dateCompleted);
+                return gameDate.getFullYear() === currentYear;
+            });
+            
+            return {
+                gamesPlayedThisMonth: thisMonthGames.length,
+                gamesPlayedThisYear: thisYearGames.length,
+                totalGamesPlayed: gamesData.length
+            };
+        }
+        
+        // Fetch the latest stats from the JSON file
+        fetch('gaming-stats.json')
+            .then(response => response.json())
+            .then(data => {
+                config = data;
+                
+                // If we have games data, calculate the stats
+                if (config.games && config.games.length > 0) {
+                    const calculatedStats = calculateStats(config.games);
+                    config.gamesPlayedThisMonth = calculatedStats.gamesPlayedThisMonth;
+                    config.gamesPlayedThisYear = calculatedStats.gamesPlayedThisYear;
+                    config.totalGamesPlayed = calculatedStats.totalGamesPlayed;
+                }
+                
+                updateDisplay();
+            })
+            .catch(error => {
+                console.error('Error fetching stats:', error);
+                // Use default values if fetch fails
+                updateDisplay();
+            });
+    </script>
+</body>
+</html>
