@@ -13,9 +13,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
+            padding: 20px;
             margin: 0;
+            min-height: 100vh;
         }
         
         .stats-container {
@@ -102,6 +102,26 @@
             font-size: 0.8em;
             opacity: 0.7;
         }
+        
+        .game-list {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .game-list h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .game-item {
+            background-color: #333;
+            border-radius: 5px;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body>
@@ -109,7 +129,7 @@
     
     <div class="stats-container">
         <div class="stat-box" id="monthly">
-            <div id="monthly-count" class="numbers">2</div>
+            <div id="monthly-count" class="numbers">0</div>
             <div>Games in <span id="current-month">April</span></div>
         </div>
         
@@ -132,34 +152,79 @@
         </div>
     </div>
     
+    <div class="game-list">
+        <h2>Recently Completed Games</h2>
+        <div id="games-container"></div>
+    </div>
+    
     <div class="last-updated" id="last-updated">Last updated: ...</div>
     
     <script>
         // Default configuration
         let config = {
             totalLibrarySize: 0,
-            gamesPlayedThisMonth: 0,
-            gamesPlayedThisYear: 0,
-            totalGamesPlayed: 0,
             games: [],
             lastUpdated: new Date().toISOString()
         };
         
+        // Format date to a readable string
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString();
+        }
+        
         // Function to update the display with the latest data
         function updateDisplay() {
+            const date = new Date();
+            const currentMonth = date.getMonth();
+            const currentYear = date.getFullYear();
+            
+            // Filter games based on completion date
+            const thisMonthGames = config.games.filter(game => {
+                const gameDate = new Date(game.dateCompleted);
+                return gameDate.getMonth() === currentMonth && gameDate.getFullYear() === currentYear;
+            });
+            
+            const thisYearGames = config.games.filter(game => {
+                const gameDate = new Date(game.dateCompleted);
+                return gameDate.getFullYear() === currentYear;
+            });
+            
             // Update the count displays
-            document.getElementById('monthly-count').textContent = config.gamesPlayedThisMonth;
-            document.getElementById('yearly-count').textContent = config.gamesPlayedThisYear;
-            document.getElementById('total-count').textContent = config.totalGamesPlayed;
+            document.getElementById('monthly-count').textContent = thisMonthGames.length;
+            document.getElementById('yearly-count').textContent = thisYearGames.length;
+            document.getElementById('total-count').textContent = config.games.length;
             
             // Calculate and update progress bar
-            const completionPercentage = Math.round((config.totalGamesPlayed / config.totalLibrarySize) * 100) || 0;
+            const completionPercentage = Math.round((config.games.length / config.totalLibrarySize) * 100) || 0;
             document.getElementById('progress-fill').style.width = `${completionPercentage}%`;
             document.getElementById('progress-text').textContent = `${completionPercentage}%`;
             
             // Update the last updated timestamp
             const lastUpdated = new Date(config.lastUpdated);
             document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated.toLocaleString()}`;
+            
+            // Display the list of games
+            const gamesContainer = document.getElementById('games-container');
+            gamesContainer.innerHTML = '';
+            
+            // Sort games by completion date (newest first)
+            const sortedGames = [...config.games].sort((a, b) => {
+                return new Date(b.dateCompleted) - new Date(a.dateCompleted);
+            });
+            
+            // Show the 10 most recent games
+            const recentGames = sortedGames.slice(0, 10);
+            
+            recentGames.forEach(game => {
+                const gameEl = document.createElement('div');
+                gameEl.className = 'game-item';
+                gameEl.innerHTML = `
+                    <div class="game-name">${game.name}</div>
+                    <div class="game-date">${formatDate(game.dateCompleted)}</div>
+                `;
+                gamesContainer.appendChild(gameEl);
+            });
         }
         
         // Set current month and year
@@ -168,51 +233,26 @@
         document.getElementById('current-month').textContent = months[date.getMonth()];
         document.getElementById('current-year').textContent = date.getFullYear();
         
-        // Function to calculate statistics based on games data
-        function calculateStats(gamesData) {
-            const currentMonth = date.getMonth();
-            const currentYear = date.getFullYear();
-            
-            // Count games played this month
-            const thisMonthGames = gamesData.filter(game => {
-                const gameDate = new Date(game.dateCompleted);
-                return gameDate.getMonth() === currentMonth && gameDate.getFullYear() === currentYear;
-            });
-            
-            // Count games played this year
-            const thisYearGames = gamesData.filter(game => {
-                const gameDate = new Date(game.dateCompleted);
-                return gameDate.getFullYear() === currentYear;
-            });
-            
-            return {
-                gamesPlayedThisMonth: thisMonthGames.length,
-                gamesPlayedThisYear: thisYearGames.length,
-                totalGamesPlayed: gamesData.length
-            };
+        // Function to fetch and refresh data
+        function fetchData() {
+            fetch('gaming-stats.json?nocache=' + new Date().getTime())
+                .then(response => response.json())
+                .then(data => {
+                    config = data;
+                    updateDisplay();
+                })
+                .catch(error => {
+                    console.error('Error fetching stats:', error);
+                    // Use default values if fetch fails
+                    updateDisplay();
+                });
         }
         
-        // Fetch the latest stats from the JSON file
-        fetch('gaming-stats.json')
-            .then(response => response.json())
-            .then(data => {
-                config = data;
-                
-                // If we have games data, calculate the stats
-                if (config.games && config.games.length > 0) {
-                    const calculatedStats = calculateStats(config.games);
-                    config.gamesPlayedThisMonth = calculatedStats.gamesPlayedThisMonth;
-                    config.gamesPlayedThisYear = calculatedStats.gamesPlayedThisYear;
-                    config.totalGamesPlayed = calculatedStats.totalGamesPlayed;
-                }
-                
-                updateDisplay();
-            })
-            .catch(error => {
-                console.error('Error fetching stats:', error);
-                // Use default values if fetch fails
-                updateDisplay();
-            });
+        // Initial fetch
+        fetchData();
+        
+        // Set up auto-refresh every minute to check for updates
+        setInterval(fetchData, 60000);
     </script>
 </body>
 </html>
