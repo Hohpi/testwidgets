@@ -2,8 +2,83 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "Noita",
+      "dateAdded": "2024-12-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "shapez2",
+      "dateAdded": "2024-12-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "theHunter Call of the Wild",
+      "dateAdded": "2024-12-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Sea of Stars",
+      "dateAdded": "2024-12-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Marvel Rivals",
+      "dateAdded": "2024-12-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Astroneer",
+      "dateAdded": "2024-11-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Risk of Rain 2",
+      "dateAdded": "2024-11-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Nine Sols",
+      "dateAdded": "2024-10-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Throne and Liberty",
+      "dateAdded": "2024-10-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Crypt of the Necrodancer",
+      "dateAdded": "2024-09-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Terraria",
+      "dateAdded": "2024-09-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Spectre Divide",
+      "dateAdded": "2024-09-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Core Keeper",
+      "dateAdded": "2024-09-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Pizza Possum",
+      "dateAdded": "2024-07-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Deadlock",
+      "dateAdded": "2024-07-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
       "name": "Keep Talking and Nobody Explodes",
-      "dateAdded": "2025-04-08T18:30:00Z",
+      "dateAdded": "2024-04-08T18:30:00Z",
       "status": "completed"
     },  
     {
