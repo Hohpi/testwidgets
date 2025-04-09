@@ -275,11 +275,10 @@
             gamesContainer.appendChild(gridContainer);
             
             // Sort games by date added (newest first)
-            const sortedGames = [...config.games].sort((a, b) => {
-                return new Date(b.dateAdded) - new Date(a.dateAdded);
-            });
+            const sortedGames = [...config.games];
+            // No sorting needed as we're assuming the array is already in order with newest first
             
-            // Show the 10 most recent games
+            // Show the 10 most recent games (take at most 10)
             const recentGames = sortedGames.slice(0, 10);
             
             recentGames.forEach(game => {
@@ -287,7 +286,7 @@
                 gameEl.className = 'game-item';
                 
                 const statusClass = game.status === "completed" ? "completed" : "unfinished";
-                const statusSymbol = game.status === "completed" ? "✓" : "✗";
+                const statusSymbol = game.status === "completed" ? "✓" : "✗"; // EMOJI HERE - change to your preferred symbols
                 
                 gameEl.innerHTML = `
                     <div class="game-status">
