@@ -257,13 +257,14 @@
             document.getElementById('total-count').textContent = config.games.length;
             
             // Calculate and update progress bar - based on total games played vs library size
-            const completionPercentage = Math.round((config.games.length / config.totalLibrarySize) * 100) || 0;
+            const completionPercentage = (config.games.length / config.totalLibrarySize * 100).toFixed(1);
             document.getElementById('progress-fill').style.width = `${completionPercentage}%`;
             document.getElementById('progress-text').textContent = `${completionPercentage}%`;
             
             // Update the last updated timestamp
             const lastUpdated = new Date(config.lastUpdated);
-            document.getElementById('last-updated').textContent = `Last updated: ${lastUpdated.toLocaleString()}`;
+            const formattedDate = lastUpdated.toLocaleDateString() + ' ' + lastUpdated.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('last-updated').textContent = `Last updated: ${formattedDate}`;
             
             // Display the list of games
             const gamesContainer = document.getElementById('games-container');
