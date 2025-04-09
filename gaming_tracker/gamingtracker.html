@@ -133,9 +133,19 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            width: 100%;
+            height: 70px; /* Fixed height for all game items */
         }
         
         .game-status {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .status-row {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,28 +157,46 @@
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            margin-right: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #111;
             font-weight: bold;
             font-size: 12px;
+            flex-shrink: 0; /* Prevent the icon from shrinking */
+            margin-right: 8px;
+        }
+        
+        .game-name-container {
+            width: 90%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         
         .game-name {
             font-size: 0.85em;
             font-weight: bold;
-            margin-bottom: 5px;
+        }
+        
+        .game-name-container:hover .game-name {
+            /* Show scrolling text on hover */
+            overflow: visible;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            width: 100%;
+            animation: scroll-text 5s linear infinite;
+            display: inline-block;
+        }
+        
+        @keyframes scroll-text {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
         
         .game-date {
             font-size: 0.7em;
             opacity: 0.8;
+            text-align: center;
+            width: 100%;
         }
         
         .completed {
@@ -302,10 +330,14 @@
                 
                 gameEl.innerHTML = `
                     <div class="game-status">
-                        <div class="status-icon ${statusClass}">${statusSymbol}</div>
-                        <div class="game-name">${game.name}</div>
+                        <div class="status-row">
+                            <div class="status-icon ${statusClass}">${statusSymbol}</div>
+                            <div class="game-name-container">
+                                <span class="game-name">${game.name}</span>
+                            </div>
+                        </div>
+                        <div class="game-date">${formatDate(game.dateAdded)}</div>
                     </div>
-                    <div class="game-date">${formatDate(game.dateAdded)}</div>
                 `;
                 gridContainer.appendChild(gameEl);
             });
