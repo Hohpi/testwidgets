@@ -2,6 +2,11 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "Fields of Mistria",
+      "dateAdded": "2025-03-31T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
       "name": "unpacking",
       "dateAdded": "2022-12-08T18:30:00Z",
       "status": "unfinished"
