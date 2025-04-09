@@ -3,12 +3,19 @@
   "lastUpdated": "2025-04-09T12:00:00Z",
   "games": [
     {
-      "name": "Elden Ring",
-      "dateCompleted": "2025-04-02T18:30:00Z"
+      "name": "Youropa",
+      "dateAdded": "2025-04-02T18:30:00Z",
+      "status": "unfinished"
     },
     {
-      "name": "Baldur's Gate 3",
-      "dateCompleted": "2025-03-15T21:45:00Z"
+      "name": "The Spiral Scouts",
+      "dateAdded": "2025-03-15T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Smushi Come Home",
+      "dateAdded": "2025-03-15T21:45:00Z",
+      "status": "unfinished"
     }
   ]
 }
