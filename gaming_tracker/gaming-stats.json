@@ -2,6 +2,116 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "unpacking",
+      "dateAdded": "2022-12-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Sonic Frontiers",
+      "dateAdded": "2022-11-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Temtem",
+      "dateAdded": "2022-09-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Enter the Gungeon",
+      "dateAdded": "2022-08-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Cult of the Lamb",
+      "dateAdded": "2022-08-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "We Were Here",
+      "dateAdded": "2022-07-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Coromon",
+      "dateAdded": "2022-06-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "A Dance of Fire and Ice",
+      "dateAdded": "2022-05-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Soundfall",
+      "dateAdded": "2022-05-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Dino D-Day",
+      "dateAdded": "2022-05-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Vampire Blood Hunt",
+      "dateAdded": "2022-05-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Stacklands",
+      "dateAdded": "2022-04-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Hunt Showdown",
+      "dateAdded": "2022-04-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Tales of Arise",
+      "dateAdded": "2022-04-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Have a Nice Death",
+      "dateAdded": "2022-03-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Elden Ring",
+      "dateAdded": "2022-03-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "splitgate",
+      "dateAdded": "2022-01-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Halo Master Chief Collection",
+      "dateAdded": "2022-02-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Lost Ark",
+      "dateAdded": "2022-02-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "biped",
+      "dateAdded": "2022-01-08T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Halo Infinite",
+      "dateAdded": "2022-01-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Death's Door",
+      "dateAdded": "2022-01-08T18:30:00Z",
+      "status": "completed"
+    },
+    {
       "name": "Noita",
       "dateAdded": "2024-12-08T18:30:00Z",
       "status": "unfinished"
