@@ -263,8 +263,18 @@
             
             // Update the last updated timestamp
             const lastUpdated = new Date(config.lastUpdated);
-            const formattedDate = lastUpdated.toLocaleDateString() + ' ' + lastUpdated.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-            document.getElementById('last-updated').textContent = `Last updated: ${formattedDate}`;
+            // Format time in Eastern Time Zone
+            const options = { 
+                timeZone: 'America/New_York',
+                year: 'numeric', 
+                month: 'numeric', 
+                day: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true
+            };
+            const formattedDate = lastUpdated.toLocaleString('en-US', options);
+            document.getElementById('last-updated').textContent = `Last updated: ${formattedDate} ET`;
             
             // Display the list of games
             const gamesContainer = document.getElementById('games-container');
@@ -275,9 +285,10 @@
             gridContainer.className = 'games-grid';
             gamesContainer.appendChild(gridContainer);
             
-            // Sort games by date added (newest first)
-            const sortedGames = [...config.games];
-            // No sorting needed as we're assuming the array is already in order with newest first
+            // Sort games by date added (newest first) - just in case the array isn't already sorted
+            const sortedGames = [...config.games].sort((a, b) => {
+                return new Date(b.dateAdded) - new Date(a.dateAdded);
+            });
             
             // Show the 10 most recent games (take at most 10)
             const recentGames = sortedGames.slice(0, 10);
