@@ -1,7 +1,11 @@
 {
   "totalLibrarySize": 1020,
-  "lastUpdated": "2025-04-09T12:00:00Z",
   "games": [
+    {
+      "name": "Keep Talking and Nobody Explodes",
+      "dateAdded": "2025-04-08T18:30:00Z",
+      "status": "completed"
+    },  
     {
       "name": "Youropa",
       "dateAdded": "2025-04-08T18:30:00Z",
@@ -76,6 +80,231 @@
       "name": "LOCKDOWN Protocol",
       "dateAdded": "2025-03-23T21:45:00Z",
       "status": "completed"
+    },
+    {
+      "name": "Palworld",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Monster Hunter World",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Rocket League",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Lethal Company",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Crab Champions",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Golf It",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Helldivers II",
+      "dateAdded": "2024-02-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Tekken 8",
+      "dateAdded": "2024-02-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Deep Rock Galactic Survivor",
+      "dateAdded": "2024-02-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Golf with your Friends",
+      "dateAdded": "2024-02-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Stardew Valley",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Balatro",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "(the) GNORP Apologue",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "SMITE",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "chillquarium",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Goose Goose Duck",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Apex Legends",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Bokura",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Slapshot Rebound",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Walkabout Mini Golf",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Rhythm Doctor",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Moon Hunters",
+      "dateAdded": "2024-01-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "BandleTale",
+      "dateAdded": "2024-02-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Overcooked! 2",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Cyberpunk 2077",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Simple Fish Adventure",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Brawhalla",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Spin Rhythm XD",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Cookie Clicker",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Multiversus",
+      "dateAdded": "2024-03-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Content Warning",
+      "dateAdded": "2024-04-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Multiplayer Platform Golf",
+      "dateAdded": "2024-04-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Gray Zone Warfare",
+      "dateAdded": "2024-04-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Escape Simulator",
+      "dateAdded": "2024-04-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Baladins",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Hades",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "PUBG Battlegrounds",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "DJ MAX RESPECT V",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Valheim",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Bopl Battle",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Pilgrim",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Party Animals",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Street Fighter 6",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Friends vs Friends",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Murky Divers",
+      "dateAdded": "2024-05-23T21:45:00Z",
+      "status": "unfinished"
     }
   ]
 }
