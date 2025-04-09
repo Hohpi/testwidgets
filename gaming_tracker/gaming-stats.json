@@ -25,22 +25,57 @@
     {
       "name": "Bo: Path of the Teal Lotus",
       "dateAdded": "2024-10-18T21:45:00Z",
-      "status": "finished"
+      "status": "completed"
     },
     {
       "name": "Rift of the Necrodancer",
       "dateAdded": "2024-10-17T21:45:00Z",
-      "status": "finished"
+      "status": "completed"
     },
     {
       "name": "GRIS",
       "dateAdded": "2024-10-19T21:45:00Z",
-      "status": "finished"
+      "status": "completed"
     },
     {
       "name": "Celeste",
       "dateAdded": "2024-11-13T21:45:00Z",
-      "status": "finished"
+      "status": "completed"
+    },
+    {
+      "name": "Phoenix Wright: Ace Attorney Trilogy",
+      "dateAdded": "2025-04-08T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Monster Hunter Wilds",
+      "dateAdded": "2025-02-28T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "R.E.P.O",
+      "dateAdded": "2025-03-30T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "Split Fiction",
+      "dateAdded": "2025-03-31T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Midnight Murder Club",
+      "dateAdded": "2025-03-22T21:45:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "PUCK",
+      "dateAdded": "2025-03-22T21:45:00Z",
+      "status": "completed"
+    },
+    {
+      "name": "LOCKDOWN Protocol",
+      "dateAdded": "2025-03-23T21:45:00Z",
+      "status": "completed"
     }
   ]
 }
