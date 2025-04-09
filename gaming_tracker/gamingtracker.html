@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <div class="game-list">
+        <h2>Recently Played Games</h2>
+        <div id="games-container"></div>
+    </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900">
@@ -106,7 +110,7 @@
         .game-list {
             margin-top: 30px;
             width: 100%;
-            max-width: 500px;
+            max-width: 800px;
         }
         
         .game-list h2 {
@@ -114,13 +118,65 @@
             margin-bottom: 15px;
         }
         
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 10px;
+        }
+        
         .game-item {
             background-color: #333;
             border-radius: 5px;
-            padding: 10px 15px;
-            margin-bottom: 10px;
+            padding: 10px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .game-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            width: 100%;
+        }
+        
+        .status-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        .game-name {
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
+        }
+        
+        .game-date {
+            font-size: 0.7em;
+            opacity: 0.8;
+        }
+        
+        .completed {
+            background-color: #4CAF50;
+        }
+        
+        .unfinished {
+            background-color: #F44336;
         }
     </style>
 </head>
@@ -152,10 +208,6 @@
         </div>
     </div>
     
-    <div class="game-list">
-        <h2>Recently Played Games</h2>
-        <div id="games-container"></div>
-    </div>
     
     <div class="last-updated" id="last-updated">Last updated: ...</div>
     
@@ -173,20 +225,29 @@
             return date.toLocaleDateString();
         }
         
+        // Format date to a readable string
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString();
+        }
+        
         // Function to update the display with the latest data
         function updateDisplay() {
             const date = new Date();
             const currentMonth = date.getMonth();
             const currentYear = date.getFullYear();
             
-            // Filter games based on completion date
+            // Count all games (both completed and unfinished) 
+            // because the goal is to play all games, not necessarily complete them
+            
+            // Filter games based on date added
             const thisMonthGames = config.games.filter(game => {
-                const gameDate = new Date(game.dateCompleted);
+                const gameDate = new Date(game.dateAdded);
                 return gameDate.getMonth() === currentMonth && gameDate.getFullYear() === currentYear;
             });
             
             const thisYearGames = config.games.filter(game => {
-                const gameDate = new Date(game.dateCompleted);
+                const gameDate = new Date(game.dateAdded);
                 return gameDate.getFullYear() === currentYear;
             });
             
@@ -195,7 +256,7 @@
             document.getElementById('yearly-count').textContent = thisYearGames.length;
             document.getElementById('total-count').textContent = config.games.length;
             
-            // Calculate and update progress bar
+            // Calculate and update progress bar - based on total games played vs library size
             const completionPercentage = Math.round((config.games.length / config.totalLibrarySize) * 100) || 0;
             document.getElementById('progress-fill').style.width = `${completionPercentage}%`;
             document.getElementById('progress-text').textContent = `${completionPercentage}%`;
@@ -208,9 +269,14 @@
             const gamesContainer = document.getElementById('games-container');
             gamesContainer.innerHTML = '';
             
-            // Sort games by completion date (newest first)
+            // Create grid container
+            const gridContainer = document.createElement('div');
+            gridContainer.className = 'games-grid';
+            gamesContainer.appendChild(gridContainer);
+            
+            // Sort games by date added (newest first)
             const sortedGames = [...config.games].sort((a, b) => {
-                return new Date(b.dateCompleted) - new Date(a.dateCompleted);
+                return new Date(b.dateAdded) - new Date(a.dateAdded);
             });
             
             // Show the 10 most recent games
@@ -219,12 +285,21 @@
             recentGames.forEach(game => {
                 const gameEl = document.createElement('div');
                 gameEl.className = 'game-item';
+                
+                const statusClass = game.status === "completed" ? "completed" : "unfinished";
+                const statusSymbol = game.status === "completed" ? "✓" : "✗";
+                
                 gameEl.innerHTML = `
-                    <div class="game-name">${game.name}</div>
-                    <div class="game-date">${formatDate(game.dateCompleted)}</div>
+                    <div class="game-status">
+                        <div class="status-icon ${statusClass}">${statusSymbol}</div>
+                        <div class="game-name">${game.name}</div>
+                    </div>
+                    <div class="game-date">${formatDate(game.dateAdded)}</div>
                 `;
-                gamesContainer.appendChild(gameEl);
+                gridContainer.appendChild(gameEl);
             });
+            
+
         }
         
         // Set current month and year
