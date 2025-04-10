@@ -2,6 +2,11 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "Gravity Circuit",
+      "dateAdded": "2025-04-09T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
       "name": "Fields of Mistria",
       "dateAdded": "2025-03-31T18:30:00Z",
       "status": "unfinished"
