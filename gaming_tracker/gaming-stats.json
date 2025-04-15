@@ -2,6 +2,16 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "Almost There",
+      "dateAdded": "2025-04-14T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
+      "name": "Super Hexagon",
+      "dateAdded": "2025-04-14T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
       "name": "Gravity Circuit",
       "dateAdded": "2025-04-09T18:30:00Z",
       "status": "unfinished"
