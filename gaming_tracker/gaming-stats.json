@@ -2,6 +2,11 @@
   "totalLibrarySize": 1020,
   "games": [
     {
+      "name": "Cassette Beasts",
+      "dateAdded": "2025-04-15T18:30:00Z",
+      "status": "unfinished"
+    },
+    {
       "name": "Almost There",
       "dateAdded": "2025-04-14T18:30:00Z",
       "status": "unfinished"
